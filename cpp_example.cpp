@@ -62,7 +62,7 @@ void cpp_example(int samples=10000){
   // a double gaussian
   auto hist4 = (TH1F*) hist1->Clone("hist4");
   hist4->SetTitle("Double Gaussian;x;frequency");
-  fpeak->SetParameter(1,20);
+  fpeak->SetParameter(100,20);
   hist4->FillRandom("fpeak",samples/2);
   tc2->cd(4);
   hist4->Draw("e");

@@ -25,3 +25,16 @@ Exercise 3 (PHYS5630 only):
   - Output the following 2 files, one from each program: ```canvas2d_py.png``` and ```canvas2d_cpp.png```, and include these in your repo.  In this case you only need to save the second plot containing 4 panels.
 
 (Use program names: ```cpp_example2.cpp``` , ```python_example2.py``` and push these to your github repo)
+
+
+plotting_examples.ipynb - I had to do this work locally on my jupyter lab because VSCode is giving me issues with the 56xx kernel so I deleted the OG file and replaced it with a copy that I filled everything out in on my local build. 
+
+myplots.py - The instructions seem to imply we have to use matplotlib instead of root since it would be pretty redundant to just translate root cpp into pyroot. this script does all the plotting with pyplot. first it generates canvas1_py.png which is just a random gaussian with error bars. the second part creates 3 more gaussian (offset, offset2, and double gaussian). i then made a function to help with plotting. this half of the code is used to generate canvas2_py.pdf. This exercise taught me to only use root from now on lol
+
+cpp_example2.cpp - The translation from 1D to 2D is pretty obvious. My biggest change came from altering how you fill Gaussians which is using rand.Gaus(mu, std dev) instead of the fpeak thing given in the example. There is a difference when it comes to the double gaussian. In the 1D example, the extra gaussian is centered at 1 with a std dev of 20, so a lot of entries simply miss the bins when filling. This issue is significantly worsened in the 2d case, so h1 and h4 looked the same. So i changed it to center the second gaussian at 100, not 1. I also changed my main method at the end because i don't care about the interactive stuff
+
+Makefile - I copied the cpp_example lines and just threw a 2 on the end. 
+
+python_example2.py - I used pyroot, so it was just switching syntax from cpp to python. Same thing, the h4 plot is weird, so switched that second gaussian again.
+
+Note: I also modified the original python_example and cpp_example scripts to shift the mean of the double gaussian to 100. I was having some issues with this running properly (Bob was also a bit confused at it) so the plots generated from these scripts aren't quite right. mine are good to go for the actual exercises
